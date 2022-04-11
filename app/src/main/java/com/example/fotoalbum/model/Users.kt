@@ -1,15 +1,16 @@
 package com.example.fotoalbum.model
 
-data class Users ()
-{
-    var id: Int = 0
-    var name: String = ""
-    var username: String = ""
-    var email: String = ""
-    var address: Address = Address()
-    var phone: String = ""
-    var website: String = ""
-    var company: Company = Company()
-}
+data class Users(
+    val id: Int,
+    val name: String,
+    val username: String,
+    val email: String,
+    val address: Address,
+    val geo: Geo,
+    val phone: String,
+    val website: String,
+    val company: Company
+)
+
 
 
