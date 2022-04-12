@@ -11,6 +11,7 @@
         <action
             android:id="@+id/action_usersFragment_to_albumsFragment"
             app:destination="@id/albumsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/albumsFragment"
@@ -19,6 +20,10 @@
         <action
             android:id="@+id/action_albumsFragment_to_photosFragment"
             app:destination="@id/photosFragment" />
+        <argument
+            android:name="userId"
+            app:argType="com.example.fotoalbum.model.Users" />
+
     </fragment>
     <fragment
         android:id="@+id/photosFragment"
