@@ -8,7 +8,6 @@
         <entry key="..\:/Users/bruker/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_users.xml" value="0.48072916666666665" />
         <entry key="..\:/Users/bruker/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/grid_layout.xml" value="0.48072916666666665" />
         <entry key="..\:/Users/bruker/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/row_layout_albums.xml" value="0.26458333333333334" />
-        <entry key="..\:/Users/bruker/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/row_layout_photos.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/bruker/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/row_layout_user.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_album_list.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_item_list.xml" value="0.30117753623188404" />
@@ -16,6 +15,15 @@
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_photo_list.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_picture_list.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_user_list.xml" value="0.30117753623188404" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/fragment_photos.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/fragment_users.xml" value="0.1721014492753623" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/fragment_view_photos.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/fragment_view_photos_recycle.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/grid_layout.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/row_layout_albums.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/row_layout_photos.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/row_layout_user.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum2/app/src/main/res/layout/row_layout_view_photos.xml" value="0.1721014492753623" />
       </map>
     </option>
   </component>
