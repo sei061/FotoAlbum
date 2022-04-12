@@ -12,13 +12,25 @@ class Repository {
     suspend fun getUsers(): Response<List<Users>> {
         return RetrofitInstance.api.getUsers()
     }
+
     suspend fun getAlbums(): Response<List<Album>> {
         return RetrofitInstance.api.getAlbums()
     }
+
     suspend fun getPhotos(): Response<List<Photos>> {
         return RetrofitInstance.api.getPhotos()
     }
-    suspend fun getPostsByUserId(userId: Int): Response<List<Posts>> {
-        return RetrofitInstance.api.getPostsByUserId(userId)
+
+    suspend fun getPhotosByUserId(albumId: Int): Response<List<Photos>> {
+        return RetrofitInstance.api.getPhotosByAlbumId(albumId)
     }
-}
+
+    suspend fun getPhotosByAlbumId(albumId: Int): Response<List<Photos>> {
+        return RetrofitInstance.api.getPhotosByAlbumId(albumId)
+    }
+
+    suspend fun getAlbumByUserId(userId: Int): Response<List<Album>> {
+        return RetrofitInstance.api.getAlbumByUserId(userId)
+    }
+
+    }

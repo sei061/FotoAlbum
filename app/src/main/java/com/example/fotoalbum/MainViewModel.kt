@@ -18,7 +18,8 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     val myUsersResponse: MutableLiveData<Response<List<Users>>> = MutableLiveData()
     val myAlbumsResponse: MutableLiveData<Response<List<Album>>> = MutableLiveData()
     val myPhotosResponse: MutableLiveData<Response<List<Photos>>> = MutableLiveData()
-    val myPostsResponse: MutableLiveData<Response<List<Posts>>> = MutableLiveData()
+    val myPhotosByUserId: MutableLiveData<Response<List<Photos>>> = MutableLiveData()
+    val myAlbumByUserId: MutableLiveData<Response<List<Album>>> = MutableLiveData()
 
     fun getUser() {
         viewModelScope.launch {
@@ -38,12 +39,20 @@ class MainViewModel(private val repository: Repository): ViewModel() {
             myPhotosResponse.value = response
         }
     }
-    fun getPostsByUserId(userId: Int) {
+    fun getPhotosByUserId(albumId: Int) {
         viewModelScope.launch {
-            val response: Response<List<Posts>> = repository.getPostsByUserId(userId)
-            myPostsResponse.value = response
+            val response: Response<List<Photos>> = repository.getPhotosByAlbumId(albumId)
+            myPhotosByUserId.value = response
         }
     }
 
+    fun getAlbumByUserId(userId: Int) {
+        viewModelScope.launch {
+            val response: Response<List<Album>> = repository.getAlbumByUserId(userId)
+            myAlbumByUserId.value = response
+        }
+    }
 
-}
+    }
+
+
