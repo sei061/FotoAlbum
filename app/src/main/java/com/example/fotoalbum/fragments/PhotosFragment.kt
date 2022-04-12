@@ -1,33 +1,31 @@
 package com.example.fotoalbum.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.fotoalbum.R
+import com.example.fotoalbum.API.MainViewModelFactory
+import com.example.fotoalbum.Adapters.MyOnClickListener
+import com.example.fotoalbum.Adapters.UserAdapter
+import com.example.fotoalbum.MainViewModel
+import com.example.fotoalbum.repository.Repository
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fotoalbum.Adapters.PhotosAdapter
+import com.example.fotoalbum.databinding.FragmentPhotosBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PhotosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class PhotosFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class PhotosFragment : Fragment(), MyOnClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentPhotosBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var viewModel: MainViewModel
+    private val photoAdapter by lazy {
+        PhotosAdapter(this)
     }
 
     override fun onCreateView(
@@ -35,26 +33,30 @@ class PhotosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_photos, container, false)
+        _binding = FragmentPhotosBinding.inflate(inflater, container, false)
+        setupRecyclerView()
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        viewModel.getPhotos()
+        viewModel.myPhotosResponse.observe(viewLifecycleOwner) { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { photoAdapter.setData(it) }
+            } else {
+                Log.d("Response", response.code().toString())
+            }
+        }
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PhotosFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PhotosFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setupRecyclerView() {
+        binding.photosList.adapter = photoAdapter
+        binding.photosList.layoutManager = LinearLayoutManager(context)
+    }
+
+    override fun onClick(position: Int) {
+        val photo = photoAdapter.photosList[position]
+        val action = PhotosFragmentDirections.actionPhotosFragmentToViewPhotosFragment(photo)
+        view?.findNavController()?.navigate(action)
     }
 }

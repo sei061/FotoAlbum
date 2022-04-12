@@ -39,5 +39,9 @@
     <fragment
         android:id="@+id/viewPhotosFragment"
         android:name="com.example.fotoalbum.fragments.ViewPhotosFragment"
-        android:label="ViewPhotosFragment" />
+        android:label="ViewPhotosFragment" >
+        <argument
+            android:name="photId"
+            app:argType="com.example.fotoalbum.model.Photos" />
+    </fragment>
 </navigation>
