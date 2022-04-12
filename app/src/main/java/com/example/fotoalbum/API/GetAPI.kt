@@ -5,6 +5,7 @@ import com.example.fotoalbum.model.Photos
 import com.example.fotoalbum.model.Posts
 import com.example.fotoalbum.model.Users
 import retrofit2.Response
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -37,6 +38,11 @@ interface GetAPI {
     suspend fun getAlbumByUserId(
         @Query("userId") userId: Int
     ): Response<List<Album>>
+
+    @DELETE("posts/{postNumber}")
+    suspend fun deletePost(
+        @Path("postNumber") postId: Int
+    ): Response<String>
 
 
 }

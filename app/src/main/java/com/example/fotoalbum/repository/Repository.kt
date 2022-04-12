@@ -33,4 +33,8 @@ class Repository {
         return RetrofitInstance.api.getAlbumByUserId(userId)
     }
 
+    suspend fun deletePost(postId: Int): Response<String> {
+        return RetrofitInstance.api.deletePost(postId)
+
     }
+}

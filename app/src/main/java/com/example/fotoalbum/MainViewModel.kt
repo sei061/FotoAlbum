@@ -20,6 +20,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     val myPhotosResponse: MutableLiveData<Response<List<Photos>>> = MutableLiveData()
     val myPhotosByUserId: MutableLiveData<Response<List<Photos>>> = MutableLiveData()
     val myAlbumByUserId: MutableLiveData<Response<List<Album>>> = MutableLiveData()
+    val myDeletePost: MutableLiveData<Response<String>> = MutableLiveData()
 
     fun getUser() {
         viewModelScope.launch {
@@ -50,6 +51,13 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         viewModelScope.launch {
             val response: Response<List<Album>> = repository.getAlbumByUserId(userId)
             myAlbumByUserId.value = response
+        }
+
+    }
+    fun deletePost(postId: Int) {
+        viewModelScope.launch {
+            val response: Response<String> = repository.deletePost(postId)
+            myDeletePost.value = response
         }
     }
 
