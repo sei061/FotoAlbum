@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_photosFragment_to_viewPhotosFragment"
             app:destination="@id/viewPhotosFragment" />
+        <argument
+            android:name="albums"
+            app:argType="com.example.fotoalbum.model.Album" />
     </fragment>
     <fragment
         android:id="@+id/viewPhotosFragment"

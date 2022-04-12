@@ -9,7 +9,8 @@ import com.example.fotoalbum.model.Users
 class UserAdapter(val listener: MyOnClickListener): RecyclerView.Adapter<UserAdapter.UsersViewHolder>() {
     var userList = emptyList<Users>()
 
-    inner class UsersViewHolder(var binding: RowLayoutUserBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class UsersViewHolder(var binding: RowLayoutUserBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
@@ -19,7 +20,8 @@ class UserAdapter(val listener: MyOnClickListener): RecyclerView.Adapter<UserAda
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
-        val binding = RowLayoutUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            RowLayoutUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UsersViewHolder(binding)
     }
 
@@ -29,7 +31,7 @@ class UserAdapter(val listener: MyOnClickListener): RecyclerView.Adapter<UserAda
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         with(holder) {
-            binding.titleTxt.text = userList[position].name
+            binding.titleTxtUser.text = userList[position].name
         }
     }
 
@@ -39,7 +41,4 @@ class UserAdapter(val listener: MyOnClickListener): RecyclerView.Adapter<UserAda
     }
 }
 
-interface MyOnClickListener {
-    fun onClick(position: Int)
-}
 
