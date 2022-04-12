@@ -1,4 +1,4 @@
-package com.example.fotoalbum.API
+package com.example.fotoalbum.viewmodelfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

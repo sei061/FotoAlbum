@@ -1,11 +1,12 @@
-package com.example.fotoalbum
+package com.example.fotoalbum.mainactivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.fotoalbum.API.MainViewModelFactory
+import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
+import com.example.fotoalbum.MainViewModel
+import com.example.fotoalbum.R
 import com.example.fotoalbum.repository.Repository
 
 

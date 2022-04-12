@@ -9,11 +9,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fotoalbum.API.MainViewModelFactory
+import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.Adapters.AlbumsAdapter
 import com.example.fotoalbum.Adapters.MyOnClickListener
 import com.example.fotoalbum.MainViewModel
-import com.example.fotoalbum.R
 import com.example.fotoalbum.databinding.FragmentAlbumsBinding
 import com.example.fotoalbum.repository.Repository
 

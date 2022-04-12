@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.fotoalbum.API.MainViewModelFactory
+import android.widget.Toast
+import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.Adapters.MyOnClickListener
 import com.example.fotoalbum.Adapters.UserAdapter
 import com.example.fotoalbum.MainViewModel
@@ -15,6 +16,8 @@ import com.example.fotoalbum.repository.Repository
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fotoalbum.room.EntityUsers
+import com.example.fotoalbum.room.UserViewModel
 
 
 class UsersFragment : Fragment(), MyOnClickListener {
@@ -23,6 +26,7 @@ class UsersFragment : Fragment(), MyOnClickListener {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var dUserViewModel: UserViewModel
     private val userAdapter by lazy {
         UserAdapter(this)
     }
@@ -36,6 +40,7 @@ class UsersFragment : Fragment(), MyOnClickListener {
         setupRecyclerView()
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
+        dUserViewModel = ViewModelProvider(this, viewModelFactory).get(UserViewModel::class.java)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.getUser()
         viewModel.myUsersResponse.observe(viewLifecycleOwner) { response ->
@@ -44,13 +49,32 @@ class UsersFragment : Fragment(), MyOnClickListener {
             } else {
                 Log.d("Response", response.code().toString())
             }
+
+        }
+        binding.floatingActionButton.setOnClickListener {
+        insertDataTodatabase()
         }
         return binding.root
+
     }
 
     private fun setupRecyclerView() {
         binding.usersList.adapter = userAdapter
         binding.usersList.layoutManager = LinearLayoutManager(context)
+    }
+    private fun insertDataTodatabase() {
+        for (i in 0 until userAdapter.userList.size) {
+            var id = userAdapter.userList[i].id
+            var name = userAdapter.userList[i].name
+            var email = userAdapter.userList[i].email
+
+            var user = EntityUsers(id, name, email)
+
+            dUserViewModel.addUser(user)
+            Toast.makeText(requireContext(), "Successfully reloaded!", Toast.LENGTH_LONG).show()
+
+
+        }
     }
 
     override fun onClick(position: Int) {
@@ -58,4 +82,5 @@ class UsersFragment : Fragment(), MyOnClickListener {
         val action = UsersFragmentDirections.actionUsersFragmentToAlbumsFragment(user)
         view?.findNavController()?.navigate(action)
     }
+
 }

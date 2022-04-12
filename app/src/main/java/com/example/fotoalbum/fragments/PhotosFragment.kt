@@ -6,9 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.fotoalbum.API.MainViewModelFactory
+import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.Adapters.MyOnClickListener
-import com.example.fotoalbum.Adapters.UserAdapter
 import com.example.fotoalbum.MainViewModel
 import com.example.fotoalbum.repository.Repository
 import androidx.lifecycle.ViewModelProvider

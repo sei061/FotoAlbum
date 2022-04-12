@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fotoalbum.API.MainViewModelFactory
 import com.example.fotoalbum.Adapters.MyOnClickListener
 import com.example.fotoalbum.Adapters.ViewPhotosAdapter
-import com.example.fotoalbum.MainViewModel
+import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.databinding.FragmentViewPhotosBinding
 import com.example.fotoalbum.repository.Repository
+import com.example.fotoalbum.MainViewModel
 
 
 class ViewPhotosFragment : Fragment(), MyOnClickListener {
