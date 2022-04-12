@@ -3,17 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/bruker/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/activity_main.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_album_list.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_item_list.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_photo.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_photo_list.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_picture_list.xml" value="0.30117753623188404" />
         <entry key="..\:/Users/stefa/AndroidStudioProjects/FotoAlbum/app/src/main/res/layout/fragment_user_list.xml" value="0.30117753623188404" />
-        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum1/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum1/app/src/main/res/layout/fragment_albums.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum1/app/src/main/res/layout/fragment_photos.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum1/app/src/main/res/layout/fragment_users.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/vbjoh/StudioProjects/FotoAlbum1/app/src/main/res/layout/fragment_view_photos.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>
