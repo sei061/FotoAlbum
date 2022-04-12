@@ -2,7 +2,12 @@ package com.example.fotoalbum.Adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.webkit.WebSettings
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
+import com.example.fotoalbum.R
 import com.example.fotoalbum.databinding.RowLayoutPhotosBinding
 import com.example.fotoalbum.model.Photos
 
@@ -28,10 +33,15 @@ class PhotosAdapter(val listener: MyOnClickListener): RecyclerView.Adapter<Photo
     }
 
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
-        with(holder) {
-            binding.photosTxt.text = photosList[position].title
-            //binding.titleTxt.text = userList[position].name
 
+        with(holder) {
+           binding.photosTxt.text = photosList[position].title
+            val url = GlideUrl(photosList[position].thumbnailUrl, LazyHeaders.Builder()
+                .addHeader("User-Agent", "android")
+                .build());
+            Glide.with(holder.itemView.context)
+                .load(url).override(150,150)
+                .into(binding.photosImage)
         }
     }
 
