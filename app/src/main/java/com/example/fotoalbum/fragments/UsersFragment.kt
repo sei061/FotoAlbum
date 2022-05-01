@@ -17,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fotoalbum.model.Users
-import com.example.fotoalbum.room.EntityUsers
 import com.example.fotoalbum.room.UserViewModel
 
 
