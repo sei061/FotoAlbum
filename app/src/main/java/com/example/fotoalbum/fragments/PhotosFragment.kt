@@ -15,6 +15,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fotoalbum.Adapters.PhotosAdapter
 import com.example.fotoalbum.databinding.FragmentPhotosBinding
+import com.example.fotoalbum.mainactivity.MainActivity
 
 
 class PhotosFragment : Fragment(), MyOnClickListener {
@@ -36,6 +37,8 @@ class PhotosFragment : Fragment(), MyOnClickListener {
         setupRecyclerView()
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
+        setHasOptionsMenu(true)
+        (activity as MainActivity).supportActionBar?.title = "Photos"
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.getPhotos()
         viewModel.myPhotosResponse.observe(viewLifecycleOwner) { response ->

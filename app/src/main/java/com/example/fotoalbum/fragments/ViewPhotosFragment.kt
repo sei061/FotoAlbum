@@ -14,6 +14,7 @@ import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.databinding.FragmentViewPhotosBinding
 import com.example.fotoalbum.repository.Repository
 import com.example.fotoalbum.MainViewModel
+import com.example.fotoalbum.mainactivity.MainActivity
 
 
 class ViewPhotosFragment : Fragment(), MyOnClickListener {
@@ -35,6 +36,8 @@ class ViewPhotosFragment : Fragment(), MyOnClickListener {
         setupRecyclerView()
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
+        setHasOptionsMenu(true)
+        (activity as MainActivity).supportActionBar?.title = "Photo"
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.getPhotosByUserId(2)
         viewModel.myPhotosByUserId.observe(viewLifecycleOwner) { response ->

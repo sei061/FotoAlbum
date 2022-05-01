@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.Adapters.MyOnClickListener
 import com.example.fotoalbum.Adapters.UserAdapter
@@ -16,6 +17,8 @@ import com.example.fotoalbum.repository.Repository
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fotoalbum.R
+import com.example.fotoalbum.mainactivity.MainActivity
 import com.example.fotoalbum.model.Users
 import com.example.fotoalbum.room.UserViewModel
 
@@ -40,6 +43,8 @@ class UsersFragment : Fragment(), MyOnClickListener {
         setupRecyclerView()
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
+        setHasOptionsMenu(true)
+        (activity as MainActivity).supportActionBar?.title = "Users"
         dUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.getUser()

@@ -14,6 +14,7 @@ import com.example.fotoalbum.Adapters.AlbumsAdapter
 import com.example.fotoalbum.Adapters.MyOnClickListener
 import com.example.fotoalbum.MainViewModel
 import com.example.fotoalbum.databinding.FragmentAlbumsBinding
+import com.example.fotoalbum.mainactivity.MainActivity
 import com.example.fotoalbum.repository.Repository
 
 class AlbumsFragment : Fragment(), MyOnClickListener {
@@ -36,6 +37,8 @@ class AlbumsFragment : Fragment(), MyOnClickListener {
         setupRecyclerView()
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
+        setHasOptionsMenu(true)
+        (activity as MainActivity).supportActionBar?.title = "Albums"
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.getAlbums()
         viewModel.myAlbumsResponse.observe(viewLifecycleOwner) { response ->
@@ -46,6 +49,9 @@ class AlbumsFragment : Fragment(), MyOnClickListener {
             }
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     }
 
     private fun setupRecyclerView() {
@@ -60,5 +66,4 @@ class AlbumsFragment : Fragment(), MyOnClickListener {
         view?.findNavController()?.navigate(action)
 
     }
-
 }

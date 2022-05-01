@@ -3,6 +3,7 @@ package com.example.fotoalbum.mainactivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.MainViewModel
@@ -18,8 +19,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
+        val myToolbar: Toolbar = findViewById(R.id.myToolbar)
+        myToolbar.title = "Users"
+        setSupportActionBar(myToolbar)
 
 
         val repository = Repository()
@@ -30,7 +32,6 @@ class MainActivity : AppCompatActivity() {
             Log.d("Response", response.isSuccessful.toString())
 
         }
-
 
     }
 }
