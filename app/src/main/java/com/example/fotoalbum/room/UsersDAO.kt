@@ -5,16 +5,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.fotoalbum.model.Users
+import retrofit2.Response
 
 @Dao
-interface EntityUsersDAO {
+interface UsersDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addUser(entityUsers: EntityUsers)
+    suspend fun getUser(user: Users)
 
-    @Query("SELECT * FROM user_table ORDER BY id")
-    fun readAllData(): LiveData<List<EntityUsers>>
-
-
+    @Query("SELECT * FROM users_table ORDER BY id")
+    fun readAllData(): LiveData<List<Users>>
 
 }

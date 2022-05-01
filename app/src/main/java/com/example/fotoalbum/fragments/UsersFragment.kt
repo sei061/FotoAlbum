@@ -16,6 +16,7 @@ import com.example.fotoalbum.repository.Repository
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fotoalbum.model.Users
 import com.example.fotoalbum.room.EntityUsers
 import com.example.fotoalbum.room.UserViewModel
 
@@ -40,8 +41,8 @@ class UsersFragment : Fragment(), MyOnClickListener {
         setupRecyclerView()
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
-        dUserViewModel = ViewModelProvider(this, viewModelFactory).get(UserViewModel::class.java)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        dUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.getUser()
         viewModel.myUsersResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful) {
@@ -52,7 +53,7 @@ class UsersFragment : Fragment(), MyOnClickListener {
 
         }
         binding.floatingActionButton.setOnClickListener {
-        insertDataTodatabase()
+        insertDataToDatabase()
         }
         return binding.root
 
@@ -62,15 +63,15 @@ class UsersFragment : Fragment(), MyOnClickListener {
         binding.usersList.adapter = userAdapter
         binding.usersList.layoutManager = LinearLayoutManager(context)
     }
-    private fun insertDataTodatabase() {
+    private fun insertDataToDatabase() {
         for (i in 0 until userAdapter.userList.size) {
             var id = userAdapter.userList[i].id
             var name = userAdapter.userList[i].name
             var email = userAdapter.userList[i].email
 
-            var user = EntityUsers(id, name, email)
+            var user = Users(id, name, email)
 
-            dUserViewModel.addUser(user)
+            dUserViewModel.getUser(user)
             Toast.makeText(requireContext(), "Successfully reloaded!", Toast.LENGTH_LONG).show()
 
 

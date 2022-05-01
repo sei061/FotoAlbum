@@ -36,7 +36,7 @@ class ViewPhotosFragment : Fragment(), MyOnClickListener {
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        viewModel.getPhotosByUserId(id)
+        viewModel.getPhotosByUserId(2)
         viewModel.myPhotosByUserId.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful) {
                 response.body()?.let { viewPhotosAdapter.setData(it) }

@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.fotoalbum.model.Users
 
-@Database(entities = [EntityUsers::class], version = 1, exportSchema = false)
+@Database(entities = [Users::class], version = 1, exportSchema = false)
 abstract class UserDatabase: RoomDatabase() {
 
-    abstract fun entityUsersDAO(): EntityUsersDAO
+    abstract fun userDao(): UsersDAO
 
     companion object {
         @Volatile
