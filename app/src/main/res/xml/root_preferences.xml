@@ -3,7 +3,7 @@
 
     <PreferenceCategory android:title="Preferences" >
         <SwitchPreferenceCompat
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="PREF_SHOW_ALL"
             android:summary="Show e-mail"
             android:title="E-mail" >

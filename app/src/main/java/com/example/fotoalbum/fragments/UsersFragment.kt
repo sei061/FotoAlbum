@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.Adapters.MyOnClickListener
 import com.example.fotoalbum.Adapters.UserAdapter
@@ -16,8 +18,10 @@ import com.example.fotoalbum.databinding.FragmentUsersBinding
 import com.example.fotoalbum.repository.Repository
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fotoalbum.R
+import com.example.fotoalbum.databinding.ActivityMainBinding
 import com.example.fotoalbum.mainactivity.MainActivity
 import com.example.fotoalbum.model.Users
 import com.example.fotoalbum.room.UserViewModel
@@ -26,7 +30,9 @@ import com.example.fotoalbum.room.UserViewModel
 class UsersFragment : Fragment(), MyOnClickListener {
 
     private var _binding: FragmentUsersBinding? = null
+
     private val binding get() = _binding!!
+
 
     private lateinit var viewModel: MainViewModel
     private lateinit var dUserViewModel: UserViewModel
@@ -58,9 +64,10 @@ class UsersFragment : Fragment(), MyOnClickListener {
         }
         binding.floatingActionButton.setOnClickListener {
         insertDataToDatabase()
-        }
-        return binding.root
 
+        }
+
+        return binding.root
     }
 
     private fun setupRecyclerView() {

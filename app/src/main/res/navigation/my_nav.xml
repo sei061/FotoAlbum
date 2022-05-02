@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_usersFragment_to_albumsFragment"
             app:destination="@id/albumsFragment" />
+        <action
+            android:id="@+id/action_usersFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
 
     </fragment>
     <fragment
@@ -23,6 +26,9 @@
         <argument
             android:name="userId"
             app:argType="com.example.fotoalbum.model.Users" />
+        <action
+            android:id="@+id/action_albumsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
 
     </fragment>
     <fragment
@@ -35,6 +41,9 @@
         <argument
             android:name="albums"
             app:argType="com.example.fotoalbum.model.Album" />
+        <action
+            android:id="@+id/action_photosFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewPhotosFragment"
@@ -43,5 +52,25 @@
         <argument
             android:name="photId"
             app:argType="com.example.fotoalbum.model.Photos" />
+        <action
+            android:id="@+id/action_viewPhotosFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.fotoalbum.fragments.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_albumsFragment"
+            app:destination="@id/albumsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_photosFragment"
+            app:destination="@id/photosFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_viewPhotosFragment"
+            app:destination="@id/viewPhotosFragment" />
     </fragment>
 </navigation>

@@ -3,10 +3,15 @@ package com.example.fotoalbum.mainactivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.MainViewModel
 import com.example.fotoalbum.R
@@ -21,14 +26,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var  viewModel: MainViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val myToolbar: Toolbar = findViewById(R.id.myToolbar)
         myToolbar.title = "Users"
         setSupportActionBar(myToolbar)
-
+        myToolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
+        //set onclick listener for back button
+        myToolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
@@ -51,5 +62,20 @@ class MainActivity : AppCompatActivity() {
         infoBtn.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,AboutFragment()).commit()
         }
+
+        val settingsBtn = findViewById<FloatingActionButton>(R.id.floatingActionButton3)
+
+        settingsBtn.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,
+                SettingsFragment()
+            ).commit()
+        }
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
+
     }
 }
