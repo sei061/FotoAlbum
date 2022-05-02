@@ -3,12 +3,18 @@ package com.example.fotoalbum.mainactivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.fotoalbum.viewmodelfactory.MainViewModelFactory
 import com.example.fotoalbum.MainViewModel
 import com.example.fotoalbum.R
+import com.example.fotoalbum.fragments.AboutFragment
+import com.example.fotoalbum.fragments.SettingsFragment
 import com.example.fotoalbum.repository.Repository
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlin.system.exitProcess
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,5 +39,17 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        val exitBtn = findViewById<FloatingActionButton>(R.id.floatingActionButton5)
+
+        exitBtn.setOnClickListener {
+            this@MainActivity.finish()
+            exitProcess(0)
+        }
+
+        val infoBtn = findViewById<FloatingActionButton>(R.id.floatingActionButton4)
+
+        infoBtn.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,AboutFragment()).commit()
+        }
     }
 }
